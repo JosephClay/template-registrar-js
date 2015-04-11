@@ -11,14 +11,14 @@
  * Mustache, Handlebars, Underscore, Lodash etc...
  */
 var undefined, // safe undefined
-	
+
 	// Template strings registered by an id string
 	templates = {},
 
 	// Compiled templates registered by an id string
 	compiledTemplates = {},
 
-	// The current template engine being used. 
+	// The current template engine being used.
 	engine;
 
 /**
@@ -91,11 +91,13 @@ var retrieve = function(name) {
 };
 
 var api = module.exports = {
+	$: function() { throw 'template-regisrar: $ NYI'; },
+
 	joint:    '\n',
 
 	add:      register,
 	register: register,
-	
+
 	/**
 	 * Remove a template from storm.template.
 	 * Removes both the string and compiled versions
@@ -114,6 +116,20 @@ var api = module.exports = {
 	 */
 	render: function(name, data) {
 		return retrieve(name)(data || {});
+	},
+
+	/**
+	 * Render a registered template with $
+	 * @param  {String} name id of the template
+	 * @param  {Object} [data] passed to the template engine as a parameter
+	 * @return {String} rendered template
+	 */
+	render$: function(name, data) {
+		var $     = api.$,
+			parse = $.parseHTML,
+			html  = api.render(name, data);
+
+		return $((parse) ? parse(html) : html);
 	},
 
 	/**
