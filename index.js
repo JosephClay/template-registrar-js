@@ -10,10 +10,8 @@
  * Common libraries that use this paradigm are:
  * Mustache, Handlebars, Underscore, Lodash etc...
  */
-var undefined, // safe undefined
-
 	// Template strings registered by an id string
-	templates = {},
+var templates = {},
 
 	// Compiled templates registered by an id string
 	compiledTemplates = {},
