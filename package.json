@@ -1,6 +1,6 @@
 {
   "name": "template-registrar-js",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Centralized template registration for holding, compiling and rendering templates",
   "main": "index.js",
   "scripts": {
