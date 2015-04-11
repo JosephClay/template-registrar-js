@@ -147,6 +147,6 @@ var api = module.exports = {
 	 * @return {String|Object}
 	 */
 	toJSON: function(key) {
-		return key ? templates[key] : templates;
+		return key !== undefined ? templates[key] : templates;
 	}
 };
